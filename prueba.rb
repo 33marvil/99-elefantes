@@ -1,18 +1,54 @@
-# 99 Elefantes
-def elephants(sentence, nums)
-  loop do 
-    nums += 1
-    p "#{nums} #{sentence}"
-    break if nums >= 99
+class Person
+  Life_stage = {childhood:12, teenager:19, adult:50}
+  Legal_age = 18
+  
+  attr_accessor :name
+
+  def initialize(name,age)
+    @name = name
+    @age = age
+  end
+  
+  def age
+    @age
+  end
+
+  def life_stage
+    if @age < Life_stage[:childhood]
+      :childhood
+    elsif @age < Life_stage[:teenager]
+      :teenager
+    elsif @age < Life_stage[:adult]
+      :adult
+    else
+      :elder
+    end
+  end
+
+  def legal
+    @age >= Legal_age
   end
 end
- elephants("elefante se columpiaba sobre la tela de una araña, como veía que resistía fueron a llamar a otro elefante.", 0)
-#---------prueba loop
-=begin
-i = 0
-loop do 
-  i += 1
-  p "#{i} elefante se columpiaba sobre la tela de una araña, como veía que resistía fueron a llamar a otro elefante."
-  break if i >= 99 
-end
-=end
+
+
+# Esta parte del código son pruebas. 
+# Antes y después deben de imprimir puros "true"
+fernando = Person.new("Fernando",5)
+juan = Person.new("Juan",45)
+laura = Person.new("Laura",87)
+andrea = Person.new("Andrea",13)
+
+puts fernando.legal == false
+puts juan.legal == true
+puts laura.legal == true
+puts andrea.legal == false
+
+puts fernando.life_stage == :childhood
+puts juan.life_stage == :adult
+puts laura.life_stage == :elder
+puts andrea.life_stage == :teenager
+
+puts laura.age == 87
+laura.name = "Ximena"
+puts laura.name == "Ximena"
+
